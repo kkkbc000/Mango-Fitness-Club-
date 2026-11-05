@@ -15,7 +15,7 @@
 <h2>🏆 이달의 TOP 3</h2><p class="hint">이름을 누르면 개인 기록을 볼 수 있어요.</p><div class="top" id="top"></div>
 <h2>✨ 전체 운동 랭킹</h2><div class="panel ranking" id="ranking"></div><p class="foot" id="foot">출석 기록 불러오는 중...</p>
 </main>
-<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="회원별 운동 기록"><div class="modal"><div class="modalhead"><div><div class="eyebrow">MY WORKOUT RECORD</div><h2 id="detailname"></h2><div class="hint" id="detailmonth"></div></div><button class="close" id="close" aria-label="닫기">×</button></div><div class="detailstats"><div class="detailstat"><small>이번 달 운동</small><strong id="detailcount"></strong></div><div class="detailstat"><small>현재 순위</small><strong id="detailrank"></strong></div></div><h2>📊 주차별 운동 횟수</h2><div id="weeks"></div><h2>📅 나의 운동 달력</h2><div class="workout-calendar" id="calendar" aria-label="월별 운동 달력"></div><div class="calendar-legend">🥭 운동 완료 · 빈 칸은 운동 기록 없음</div><div class="calendar-note" id="calendarNote" hidden aria-live="polite"></div></div></div>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="회원별 운동 기록"><div class="modal"><div class="modalhead"><div><div class="eyebrow">MY WORKOUT RECORD</div><h2 id="detailname"></h2><div class="hint" id="detailmonth"></div></div><button class="close" id="close" aria-label="닫기">×</button></div><div class="detailstats"><div class="detailstat"><small>이번 달 운동</small><strong id="detailcount"></strong></div><div class="detailstat"><small>현재 순위</small><strong id="detailrank"></strong></div></div><h2>📊 주차별 운동 횟수</h2><div id="weeks"></div><h2>📅 나의 운동 달력</h2><div class="workout-calendar" id="calendar" aria-label="월별 운동 달력"></div><div class="calendar-note" id="calendarNote" hidden aria-live="polite"></div></div></div>
 <script>
 const DATA_URL='./data.json';
 const $=id=>document.getElementById(id);
@@ -90,7 +90,7 @@ function renderDaily(){
   }
   dates.forEach(([date,count])=>{
     const parts=date.split('-');
-    const label=parts.length===3?Number(parts[1])+'월 '+Number(parts[2])+'일':date;
+    const label=parts.length===3?`${Number(parts[1])}/${Number(parts[2])}(${['일','월','화','수','목','금','토'][new Date(Number(parts[0]),Number(parts[1])-1,Number(parts[2])).getDay()]})`:date;
     const row=node('div','daily-row');
     row.appendChild(node('span','',label));
     row.appendChild(node('strong','daily-count',count+'회'));
