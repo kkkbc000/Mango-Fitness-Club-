@@ -12,7 +12,7 @@
 <body><main>
 <header class="hero"><div class="eyebrow">MANGO FITNESS CLUB</div><h1>갓생을 위한 첫걸음</h1><p>오늘 쌓은 꾸준함이 내일의 변화를 만듭니다</p><span class="mango m1">🥭</span><span class="mango m2">🥭</span><span class="mango m3">🥭</span></header>
 <div class="toolbar"><select id="month" aria-label="월 선택"><option value="">데이터 불러오는 중...</option></select><button class="refresh" id="refresh">↻ 새로고침</button></div>
-<section class="panel challenge" id="challenge" hidden><button class="challenge-toggle" id="challengeToggle" type="button" aria-expanded="false" aria-controls="challengeContent"><div><div class="challenge-title">🥭 망고피트니스 출석 챌린지</div><div class="challenge-subtitle">11,12월 인증횟수 26회 달성하기</div></div><span class="challenge-arrow" id="challengeArrow" aria-hidden="true">⌄</span></button><div class="challenge-content" id="challengeContent" hidden><div class="challenge-summary" id="challengeSummary"></div><div id="challengeGroups"></div></div></section>
+<section class="panel challenge" id="challenge" hidden><button class="challenge-toggle" id="challengeToggle" type="button" aria-expanded="false" aria-controls="challengeContent"><div><div class="challenge-title">🥭 망고피트니스 출석 챌린지</div><div class="challenge-subtitle">11,12월 인증횟수 26회 달성하기</div></div><span class="challenge-arrow" id="challengeArrow" aria-hidden="true">⌄</span></button><div class="challenge-content" id="challengeContent" hidden><div id="challengeGroups"></div></div></section>
 <section class="stats"><div class="stat"><span>참여 회원</span><strong id="people">0명</strong></div><button class="stat stat-toggle" id="totalToggle" type="button" aria-expanded="false" aria-controls="dailyPanel"><span>이달의 운동 합계</span><strong id="total">0회</strong><span class="stat-arrow" id="totalArrow" aria-hidden="true">⌄</span></button></section><section class="panel daily-panel" id="dailyPanel" hidden aria-label="날짜별 운동 현황"><div class="daily-title" id="dailyTitle">📅 날짜별 운동 현황</div><div id="dailyRows"></div></section>
 <h2>🏆 이달의 TOP 3</h2><p class="hint">이름을 누르면 개인 기록을 볼 수 있어요.</p><div class="top" id="top"></div>
 <h2>✨ 전체 운동 랭킹</h2><div class="panel ranking" id="ranking"></div><p class="foot" id="foot">출석 기록 불러오는 중...</p>
@@ -100,10 +100,8 @@ function renderChallenge(){
   const sorted=[...combined].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0],'ko'));
   const categories=[
     {title:'🏆 26회 이상 · 달성 성공',test:n=>n>=26,cls:'success'},
-    {title:'🔥 19~25회 · 달성 임박',test:n=>n>=19&&n<=25,cls:''},
-    {title:'🌱 18회 이하 · 도전 중',test:n=>n<19,cls:''}
+    {title:'🔥 18~25회 · 도전 중',test:n=>n>=18&&n<=25,cls:''}
   ];
-  $('challengeSummary').textContent='11월 + 12월 누적 인증횟수 · '+sorted.length+'명';
   $('challengeGroups').replaceChildren();
   for(const category of categories){
     const section=node('section','challenge-group');
