@@ -6,11 +6,13 @@
 <style>
 :root{--ink:#4a3a23;--sub:#927a53;--orange:#e99c36;--cream:#fff7d8;--yellow:#ffe9a5;--green:#6c9a67}*{box-sizing:border-box}body{margin:0;background:linear-gradient(155deg,#fff1b9 0%,#fff8df 45%,#fffdf5 100%);color:var(--ink);font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif}main{max-width:580px;margin:auto;padding:18px 16px 56px}.hero{position:relative;overflow:hidden;border-radius:27px;padding:30px 22px 36px;background:linear-gradient(135deg,#ffe39a,#ffedbb 58%,#fff2ca);box-shadow:0 8px 24px #c9942c18;isolation:isolate}.eyebrow{font-size:11px;font-weight:850;letter-spacing:1.8px;color:#a47a31}.hero h1{font-size:27px;line-height:1.3;margin:18px 0 9px;position:relative;z-index:1;letter-spacing:-.8px}.hero p{font-size:13px;line-height:1.7;margin:0;position:relative;z-index:1;color:#795f32;max-width:270px}.mango{position:absolute;font-size:70px;opacity:.16;user-select:none;pointer-events:none;animation:float 7s ease-in-out infinite}.m1{right:4px;top:12px;transform:rotate(-18deg)}.m2{right:45px;bottom:-30px;font-size:105px;animation-delay:-3s}.m3{right:108px;top:-36px;font-size:62px;animation-delay:-1.5s}@keyframes float{0%,100%{translate:0 0}50%{translate:0 -11px}}@media(prefers-reduced-motion:reduce){.mango{animation:none}}.toolbar{display:flex;gap:9px;margin:20px 0 14px}select,.refresh{font:inherit;border-radius:14px;padding:12px;border:1px solid #eeddb7;background:#fff;color:var(--ink)}select{flex:1;font-weight:700;min-width:0}.refresh{font-weight:700;color:#a76a1f;background:#fff8e9;cursor:pointer}.stats{display:grid;grid-template-columns:1fr 1fr;gap:11px}.stat,.panel{background:#fffefa;border:1px solid #f3e9cf;border-radius:20px;box-shadow:0 4px 14px #b7923810}.stat{padding:17px}.stat span{font-size:12px;color:var(--sub)}.stat-toggle{width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer;position:relative}.stat-toggle:focus-visible{outline:3px solid #e99c36;outline-offset:3px}.stat-toggle .stat-arrow{position:absolute;right:15px;top:18px;color:#a47a31;font-size:16px}.daily-panel{margin-top:11px;padding:17px}.daily-panel[hidden]{display:none}.daily-title{font-size:14px;font-weight:800;margin-bottom:12px}.daily-row{display:flex;justify-content:space-between;align-items:center;padding:10px 2px;border-bottom:1px solid #f3e9cf;font-size:13px}.daily-row:last-child{border-bottom:0}.daily-count{font-weight:800;color:#b97722}.daily-summary{margin-top:8px;padding-top:10px;border-top:2px solid #f3e9cf;font-weight:800}.daily-empty{font-size:13px;color:var(--sub)}.stat strong{display:block;font-size:27px;margin-top:3px}h2{font-size:18px;margin:25px 0 12px}.hint{font-size:12px;color:var(--sub);margin:-5px 0 12px}.top{display:flex;flex-direction:column;gap:9px}.member{width:100%;display:flex;align-items:center;gap:12px;text-align:left;background:#fffefa;border:1px solid #f0e4c7;border-radius:16px;padding:15px;color:inherit;cursor:pointer;font:inherit}.member.first{background:#fff2c9;border-color:#f1d88b}.medal{font-size:25px;min-width:35px;text-align:center}.member .name{font-size:14px;font-weight:750;overflow-wrap:anywhere}.member .ranknote{font-size:11px;color:var(--sub)}.count{margin-left:auto;font-weight:850;color:#b97722;white-space:nowrap}.ranking{overflow:hidden}.ranking .member{border:0;border-bottom:1px solid #f5ebd9;border-radius:0}.ranking .member:last-child{border-bottom:0}.ranknum{min-width:35px;text-align:center;font-weight:800;color:#bd8a38}.chev{color:#c5ad83}.foot{text-align:center;font-size:11px;color:#a48d67;margin:22px 0}.overlay{display:none;position:fixed;inset:0;background:#30261983;z-index:20;justify-content:center;align-items:flex-end}.overlay.open{display:flex}.modal{background:#fffefa;border-radius:25px 25px 0 0;width:100%;max-width:580px;max-height:88vh;overflow:auto;padding:23px 20px 35px}.modalhead{display:flex;justify-content:space-between;gap:12px}.modalhead h2{margin:5px 0 2px}.close{background:#fff1cf;border:0;border-radius:50%;height:36px;width:36px;font-size:22px;cursor:pointer}.detailstats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}.detailstat{border-radius:17px;padding:15px;text-align:center;background:#fff1c8}.detailstat:nth-child(2){background:#eaf5df}.detailstat small{display:block;color:#7d7157}.detailstat strong{font-size:24px}.week{display:grid;grid-template-columns:54px 1fr 32px;gap:10px;align-items:center;margin:12px 0;font-size:12px}.track{height:12px;border-radius:15px;background:#f3eedf;overflow:hidden}.bar{height:100%;background:#9cc98d;border-radius:15px}.dates{display:flex;flex-wrap:wrap;gap:8px}.pill{padding:8px 11px;background:#fff1cf;color:#9a6a26;border-radius:10px;font-size:12px;font-weight:700}.empty{font-size:13px;color:var(--sub)}@media(min-width:600px){.overlay{align-items:center}.modal{border-radius:25px;margin:16px}}
 .workout-calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin-top:12px}.calendar-weekday{text-align:center;font-size:12px;font-weight:700;color:#927a53;padding:6px 0}.calendar-weekday:first-child{color:#d48b76}.calendar-weekday:nth-child(7){color:#7a9fc6}.calendar-day{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:48px;border:1px solid #f2e8d3;border-radius:11px;background:#fff;color:#6b573a;font:inherit;font-size:12px;cursor:pointer}.calendar-day.worked{background:#ffe7a1;border-color:#f1d88b;font-weight:750}.calendar-day.selected{outline:2px solid #cb922e;outline-offset:1px}.calendar-day:focus-visible{outline:3px solid #e99c36;outline-offset:1px}.calendar-day .mango-mark{font-size:16px;line-height:1}.calendar-blank{min-height:48px}.calendar-note{text-align:center;background:#fff6dd;color:#8b6b32;border-radius:10px;padding:10px;margin-top:10px;font-size:12px}.calendar-legend{text-align:center;font-size:12px;color:#8a744f;margin-top:11px}
+.challenge{margin:15px 0 5px;overflow:hidden}.challenge[hidden]{display:none}.challenge-toggle{width:100%;border:0;background:#fffefa;padding:18px;text-align:left;color:var(--ink);font:inherit;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px}.challenge-title{font-size:16px;font-weight:850}.challenge-subtitle{font-size:12px;color:var(--sub);margin-top:5px}.challenge-arrow{font-size:20px;color:#b97722}.challenge-content[hidden]{display:none}.challenge-content{border-top:1px solid #f3e9cf;padding:16px}.challenge-group{margin-bottom:17px}.challenge-group:last-child{margin-bottom:0}.challenge-heading{font-size:14px;font-weight:850;margin:0 0 8px}.challenge-member{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:11px;background:#fff8e9;margin:5px 0;font-size:13px}.challenge-member.success{background:#edf7e8}.challenge-count{font-weight:850;color:#a96c20}.challenge-member.success .challenge-count{color:#488346}.challenge-empty{font-size:12px;color:var(--sub);margin:6px 0 0}.challenge-summary{font-size:12px;color:var(--sub);margin-bottom:13px}
 </style>
 </head>
 <body><main>
 <header class="hero"><div class="eyebrow">MANGO FITNESS CLUB</div><h1>갓생을 위한 첫걸음</h1><p>오늘 쌓은 꾸준함이 내일의 변화를 만듭니다</p><span class="mango m1">🥭</span><span class="mango m2">🥭</span><span class="mango m3">🥭</span></header>
 <div class="toolbar"><select id="month" aria-label="월 선택"><option value="">데이터 불러오는 중...</option></select><button class="refresh" id="refresh">↻ 새로고침</button></div>
+<section class="panel challenge" id="challenge" hidden><button class="challenge-toggle" id="challengeToggle" type="button" aria-expanded="false" aria-controls="challengeContent"><div><div class="challenge-title">🥭 망고피트니스 출석 챌린지</div><div class="challenge-subtitle">11,12월 인증횟수 26회 달성하기</div></div><span class="challenge-arrow" id="challengeArrow" aria-hidden="true">⌄</span></button><div class="challenge-content" id="challengeContent" hidden><div class="challenge-summary" id="challengeSummary"></div><div id="challengeGroups"></div></div></section>
 <section class="stats"><div class="stat"><span>참여 회원</span><strong id="people">0명</strong></div><button class="stat stat-toggle" id="totalToggle" type="button" aria-expanded="false" aria-controls="dailyPanel"><span>이달의 운동 합계</span><strong id="total">0회</strong><span class="stat-arrow" id="totalArrow" aria-hidden="true">⌄</span></button></section><section class="panel daily-panel" id="dailyPanel" hidden aria-label="날짜별 운동 현황"><div class="daily-title" id="dailyTitle">📅 날짜별 운동 현황</div><div id="dailyRows"></div></section>
 <h2>🏆 이달의 TOP 3</h2><p class="hint">이름을 누르면 개인 기록을 볼 수 있어요.</p><div class="top" id="top"></div>
 <h2>✨ 전체 운동 랭킹</h2><div class="panel ranking" id="ranking"></div><p class="foot" id="foot">출석 기록 불러오는 중...</p>
@@ -21,6 +23,7 @@ const DATA_URL='./data.json';
 const $=id=>document.getElementById(id);
 const node=(tag,cls,txt)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e};
 let monthData=[],members=[],requestNumber=0;
+let hasSelectedMonth=false;
 function showStatus(message){$('foot').textContent=message}
 function normalizeMonthData(item){
   return {month:String(item.month||''),members:(Array.isArray(item.members)?item.members:[]).map(m=>({
@@ -47,7 +50,12 @@ async function loadData(){
     $('month').replaceChildren();
     monthData.forEach(item=>$('month').add(new Option(item.month,item.month)));
     if(monthData.length){
-      $('month').value=monthData.some(x=>x.month===previous)?previous:monthData[0].month;
+      const current=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit'}).format(new Date());
+       const currentOrder=Number(current.slice(0,4))*12+Number(current.slice(5,7));
+       const defaultMonth=monthData.find(x=>monthOrder(x.month)===currentOrder)
+         ||monthData.find(x=>monthOrder(x.month)<=currentOrder)
+         ||monthData[monthData.length-1];
+       $('month').value=hasSelectedMonth&&monthData.some(x=>x.month===previous)?previous:defaultMonth.month;
     }
     render();
     const stamp=data.updatedAt?new Date(data.updatedAt):null;
@@ -68,10 +76,48 @@ function render(){
   $('people').textContent=members.length+'명';
   $('total').textContent=members.reduce((a,m)=>a+m.count,0)+'회';
   renderDaily();
+  renderChallenge();
   $('top').replaceChildren();$('ranking').replaceChildren();
   if(!members.length){$('ranking').appendChild(node('p','empty',item?'아직 표시할 회원 기록이 없어요.':'데이터를 불러오는 중이에요.'));return}
   members.filter(m=>m.rank<=3).forEach(m=>$('top').appendChild(memberButton(m,true)));
   members.forEach(m=>$('ranking').appendChild(memberButton(m,false)));
+}
+function renderChallenge(){
+  const selected=$('month').value;
+  const visible=monthOrder(selected)===2026*12+12;
+  $('challenge').hidden=!visible;
+  if(!visible)return;
+  const combined=new Map();
+  for(const month of [11,12]){
+    const item=monthData.find(x=>monthOrder(x.month)===2026*12+month);
+    if(!item)continue;
+    for(const m of item.members){
+      const name=m.name.trim();
+      if(!name)continue;
+      combined.set(name,(combined.get(name)||0)+m.count);
+    }
+  }
+  const sorted=[...combined].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0],'ko'));
+  const categories=[
+    {title:'🏆 26회 이상 · 달성 성공',test:n=>n>=26,cls:'success'},
+    {title:'🔥 19~25회 · 달성 임박',test:n=>n>=19&&n<=25,cls:''},
+    {title:'🌱 18회 이하 · 도전 중',test:n=>n<19,cls:''}
+  ];
+  $('challengeSummary').textContent='11월 + 12월 누적 인증횟수 · '+sorted.length+'명';
+  $('challengeGroups').replaceChildren();
+  for(const category of categories){
+    const section=node('section','challenge-group');
+    const people=sorted.filter(([,count])=>category.test(count));
+    section.appendChild(node('h3','challenge-heading',category.title+' ('+people.length+'명)'));
+    if(!people.length)section.appendChild(node('p','challenge-empty','아직 해당하는 회원이 없어요.'));
+    for(const [name,count] of people){
+      const row=node('div','challenge-member'+(category.cls?' '+category.cls:''));
+      row.appendChild(node('span','',name));
+      row.appendChild(node('strong','challenge-count',count+'회'));
+      section.appendChild(row);
+    }
+    $('challengeGroups').appendChild(section);
+  }
 }
 function renderDaily(){
   const counts=new Map();
@@ -166,7 +212,12 @@ function renderCalendar(m){
   }
 }
 function close(){ $('overlay').classList.remove('open');document.body.style.overflow=''}
-$('month').addEventListener('change',render);
+$('month').addEventListener('change',()=>{hasSelectedMonth=true;render()});
+$('challengeToggle').addEventListener('click',()=>{
+  const content=$('challengeContent');content.hidden=!content.hidden;
+  $('challengeToggle').setAttribute('aria-expanded',String(!content.hidden));
+  $('challengeArrow').textContent=content.hidden?'⌄':'⌃';
+});
 $('totalToggle').addEventListener('click',toggleDaily);
 $('refresh').addEventListener('click',loadData);
 $('close').addEventListener('click',close);
