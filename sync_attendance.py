@@ -18,6 +18,8 @@ def download():
     req = Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; MangoAttendanceSync/1.0)", "Accept": "*/*"})
     with urlopen(req, timeout=45) as response:
         raw = response.read().decode("utf-8-sig").strip()
+            if raw.lstrip().startswith("<"):
+                print("HTML response detected")
         content_type = response.headers.get("Content-Type", "unknown")
         status = response.status
     match = re.fullmatch(r"\s*" + CALLBACK + r"\s*\(\s*(.*?)\s*\)\s*;?\s*", raw, re.DOTALL)
