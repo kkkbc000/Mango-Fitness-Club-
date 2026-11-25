@@ -235,7 +235,7 @@ function renderCalendar(m){
 
   // 저장하지 않는 임시 스티커 상태. 달력을 다시 열면 기본 망고로 표시
   const stickers=new Map();
-  const choices=['🥭','💙','👽','🍀','⭐'];
+  const choices=['🥭','💙','👽','🍀','⭐','🌸'];
 
   ['일','월','화','수','목','금','토'].forEach(day=>calendar.appendChild(node('div','calendar-weekday',day)));
   for(let i=0;i<firstDay;i++)calendar.appendChild(node('div','calendar-blank'));
