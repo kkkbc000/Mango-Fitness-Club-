@@ -11,6 +11,11 @@
 
 /* 개인 기록 섹션 제목: 월별/주차별/달력 타이포그래피 통일 */
 .modal > h2{font-size:18px;font-weight:700;line-height:1.4;letter-spacing:normal;margin:25px 0 12px;}
+
+.sticker-options{display:flex;justify-content:center;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sticker-choice{border:1px solid #f0e4c7;background:#fff;border-radius:12px;padding:8px 11px;font-size:22px;cursor:pointer}
+.sticker-choice:focus-visible{outline:2px solid #e99c36;outline-offset:2px}
+
 </style>
 </head>
 <body><main>
@@ -216,8 +221,10 @@ function renderCalendar(m){
   calendar.replaceChildren();
   note.hidden=true;
   note.textContent='';
+
   const match=$('month').value.match(/(\d{4})\s*년\s*(\d{1,2})\s*월/);
   if(!match){calendar.appendChild(node('p','empty','달력 정보를 불러올 수 없어요.'));return}
+
   const year=Number(match[1]),month=Number(match[2]);
   const firstDay=new Date(year,month-1,1).getDay();
   const lastDay=new Date(year,month,0).getDate();
@@ -225,21 +232,60 @@ function renderCalendar(m){
     const parts=d.match(/^(\d{4})-(\d{2})-(\d{2})$/);
     return parts&&Number(parts[1])===year&&Number(parts[2])===month;
   }).map(d=>Number(d.slice(8,10))));
+
+  // 저장하지 않는 임시 스티커 상태. 달력을 다시 열면 기본 망고로 표시
+  const stickers=new Map();
+  const choices=['🥭','💙','👽','🍀','⭐'];
+
   ['일','월','화','수','목','금','토'].forEach(day=>calendar.appendChild(node('div','calendar-weekday',day)));
   for(let i=0;i<firstDay;i++)calendar.appendChild(node('div','calendar-blank'));
+
   for(let day=1;day<=lastDay;day++){
     const worked=workedDays.has(day);
     const button=node('button','calendar-day'+(worked?' worked':''));
     button.type='button';
     button.setAttribute('aria-label',month+'월 '+day+'일 '+(worked?'운동 완료':'운동 기록 없음'));
     button.appendChild(node('span','',String(day)));
-    if(worked)button.appendChild(node('span','mango-mark','🥭'));
+
+    let mark=null;
+    if(worked){
+      mark=node('span','mango-mark','🥭');
+      button.appendChild(mark);
+    }
+
     button.addEventListener('click',()=>{
       calendar.querySelectorAll('.calendar-day.selected').forEach(el=>el.classList.remove('selected'));
       button.classList.add('selected');
-      note.textContent=month+'월 '+day+'일 · '+(worked?'🥭 운동 완료!':'운동 기록 없음');
+      note.replaceChildren();
       note.hidden=false;
+
+      if(!worked){
+        note.textContent=month+'월 '+day+'일 · 운동 기록 없음';
+        return;
+      }
+
+      note.appendChild(node('div','',month+'월 '+day+'일 · 스티커를 골라 보세요!'));
+      const options=node('div','sticker-options');
+
+      choices.forEach(sticker=>{
+        const choice=node('button','sticker-choice',sticker);
+        choice.type='button';
+        choice.setAttribute('aria-label',sticker+' 스티커 선택');
+        choice.setAttribute('aria-pressed',String((stickers.get(day)||'🥭')===sticker));
+        choice.addEventListener('click',()=>{
+          stickers.set(day,sticker);
+          mark.textContent=sticker;
+          options.querySelectorAll('.sticker-choice').forEach(el=>{
+            el.setAttribute('aria-pressed',String(el.textContent===sticker));
+          });
+          note.firstChild.textContent=month+'월 '+day+'일 · '+sticker+' 선택 완료!';
+        });
+        options.appendChild(choice);
+      });
+
+      note.appendChild(options);
     });
+
     calendar.appendChild(button);
   }
 }
